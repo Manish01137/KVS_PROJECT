@@ -9,6 +9,13 @@ const logger = require('./utils/logger');
 
 dotenv.config();
 
+// ── Load all models (must be before routes) ──
+require('./models/User');
+require('./models/Enrollment');
+require('./models/Payment');
+require('./models/FeeConfig');
+require('./models/Others');
+
 // ── Validate required env vars ──
 const requiredEnvVars = ['MONGO_URI', 'JWT_SECRET', 'RAZORPAY_KEY_ID', 'RAZORPAY_KEY_SECRET'];
 for (const envVar of requiredEnvVars) {
